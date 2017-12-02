@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+
 def main():
     with open('in.txt', 'r') as f:
         sum = 0

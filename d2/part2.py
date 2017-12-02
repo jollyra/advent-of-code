@@ -2,6 +2,7 @@
 
 import sys
 
+
 def main():
     str = sys.stdin.read()
     lines = str.split('\n')
@@ -11,7 +12,7 @@ def main():
         nums = list(map(int, nums))
         for i, x in enumerate(nums):
             for j, y in enumerate(nums):
-                if i != j and x%y == 0:
+                if i != j and x % y == 0:
                     sum += x/y
     print(sum)
 
