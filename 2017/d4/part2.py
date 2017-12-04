@@ -11,8 +11,7 @@ def main():
             cache = set()
             words = line.strip().split()
             for w in words:
-                w = [c for c in w]
-                w.sort()
+                w = sorted(w)
                 w = ''.join(w)
                 if w in cache:
                     valid = False
