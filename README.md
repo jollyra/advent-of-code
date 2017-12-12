@@ -14,3 +14,6 @@
 - [Day 10: Knot Hash](https://adventofcode.com/2017/day/10) | [solution](/2017/ten.py)
 - [Day 11: Hex Ed](https://adventofcode.com/2017/day/11) | [solution](/2017/eleven.py)
 - [Day 12: Digital Plumber](https://adventofcode.com/2017/day/12) | [solution](/2017/twelve.py)
+
+## 2016
+- [Day 1: No Time for a Taxicab](https://adventofcode.com/2016/day/1) | [solution](/2016/one.py)
