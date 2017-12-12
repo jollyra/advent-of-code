@@ -1,10 +1,6 @@
 #! /usr/bin/env python3
 
 
-def main():
-    print(solve(input().strip()))
-
-
 def solve(captcha):
     count = 0
     size = len(captcha)
@@ -16,4 +12,6 @@ def solve(captcha):
 
 
 if __name__ == '__main__':
-    main()
+    with open('1_input.txt', 'r') as f:
+        captcha = f.read().strip()
+        print(solve(captcha))
