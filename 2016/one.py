@@ -2,6 +2,7 @@
 
 import util
 import numpy as np
+import re
 
 
 def rotateNegative90(A):
@@ -20,16 +21,12 @@ def rotatePositive90(A):
     return A.dot(B)
 
 
-# TODO: this should use regex
 def parse(directions):
-    directions = directions.split(',')
+    directions = directions.split(', ')
     parsed = []
     for direction in directions:
-        direction = direction.strip()
-        turn = direction[0]
-        rest = ''.join(direction[1:])
-        dist = int(rest)
-        parsed.append((turn, dist))
+        turn, dist = re.search(r'([A-Z])([0-9]+)', direction).groups()
+        parsed.append((turn, int(dist)))
     return parsed
 
 
@@ -50,9 +47,10 @@ def main():
     assert how_far('R2, R2, R2') == 2
     assert how_far('R5, L5, R5, R3') == 12
 
-    directions = input().strip()
-    distance = how_far(directions)
-    print(distance)
+    with open('one_input.txt', 'r') as f:
+        directions = f.read()
+        distance = how_far(directions)
+        print(distance)
 
 
 if __name__ == '__main__':
