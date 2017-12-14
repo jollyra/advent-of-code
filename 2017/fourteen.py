@@ -1,13 +1,13 @@
 #! /usr/bin/env python3
 
 
-from knot_hash import hash
-from util import *
+from knot_hash import knot_hash
+from util import X, Y, neighbours4
 from functools import partial
 
 
-def count_regions(M):
-    count = 0
+def find_regions(M):
+    regions = []
     used_cells = find_used_cells(M)
     visited = set()
     unvisited = used_cells - visited
@@ -15,23 +15,24 @@ def count_regions(M):
         p = unvisited.pop()
         region = explore_region(M, p)
         visited |= region
-        count += 1
+        regions.append(list(region))
         unvisited = used_cells - visited
-    return count
+    return regions
 
 
 def explore_region(M, p):
     visited = set()
-    horizon = [p]
-    while len(horizon):
+    horizon = set()
+    horizon.add(p)
+    while horizon:
         p = horizon.pop()
         visited.add(p)
-        neighbours = filter(partial(is_in_range, len(M)), neighbours4(p))
-        horizon.extend([n for n in neighbours if M[Y(n)][X(n)] == '1' and n not in visited])
+        neighbours = filter(partial(is_in_bounds, len(M)), neighbours4(p))
+        horizon |= {n for n in neighbours if M[Y(n)][X(n)] == '1' and n not in visited}
     return visited
 
 
-def is_in_range(size, p):
+def is_in_bounds(size, p):
     return 0 <= X(p) < size and 0 <= Y(p) < size
 
 
@@ -53,7 +54,7 @@ def decrypt_disk(string):
     for n in range(128):
         key_string = '{}-{}'.format(string, n)
         key_strings.append(key_string)
-    hashes = [hash(s) for s in key_strings]
+    hashes = [knot_hash(s) for s in key_strings]
     bins = [hexstring_to_binary(h) for h in hashes]
     return bins
 
@@ -70,6 +71,8 @@ if __name__ == '__main__':
     M = decrypt_disk('hfdlxzhv')
     num_used_squares = count_used_squares(M)
     assert(num_used_squares == 8230)
+    num_regions = len(find_regions(M))
+    assert(num_regions == 1103)
+    print('pass')
     print('Memory used:', num_used_squares)
-    num_regions = count_regions(M)
     print('Regions:', num_regions)
