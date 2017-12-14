@@ -32,8 +32,7 @@ def explore_region(M, p):
 
 
 def is_in_range(size, p):
-    return X(p) >= 0 and X(p) < size and Y(p) >= 0 and Y(p) < size
-
+    return 0 <= X(p) < size and 0 <= Y(p) < size
 
 
 def find_used_cells(M):
@@ -46,12 +45,7 @@ def find_used_cells(M):
 
 
 def count_used_squares(M):
-    count = 0
-    for row in M:
-        for cell in row:
-            if cell == '1':
-                count += 1
-    return count
+    return sum(1 for row in M for cell in row if cell == '1')
 
 
 def decrypt_disk(string):
