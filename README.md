@@ -11,9 +11,11 @@
 - [Day 7: Recursive Circus](https://adventofcode.com/2017/day/7) | [solution](/2017/seven.py)
 - [Day 8: I Heard You Like Registers](https://adventofcode.com/2017/day/8) | [solution](/2017/eight.py)
 - [Day 9: Stream Processing](https://adventofcode.com/2017/day/9) | [solution](/2017/nine.py)
-- [Day 10: Knot Hash](https://adventofcode.com/2017/day/10) | [solution](/2017/ten.py)
+- [Day 10: Knot Hash](https://adventofcode.com/2017/day/10) | [solution](/2017/knot_hash.py)
 - [Day 11: Hex Ed](https://adventofcode.com/2017/day/11) | [solution](/2017/eleven.py)
 - [Day 12: Digital Plumber](https://adventofcode.com/2017/day/12) | [solution](/2017/twelve.py)
+- [Day 13: Packet Scanners](https://adventofcode.com/2017/day/13) | [solution](/2017/thirteen.py)
+- [Day 14: Disk Defragmentation](https://adventofcode.com/2017/day/14) | [solution](/2017/fourteen.py)
 
 ## 2016
 - [Day 1: No Time for a Taxicab](https://adventofcode.com/2016/day/1) | [solution](/2016/one.py)
