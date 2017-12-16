@@ -10,7 +10,7 @@ cat = ''.join
 
 def find_first_cycle(ps, moves):
     ps = deque(ps)
-    cache = set(letters)
+    cache = set()
     for i in range(1000000000):
         ps = dance(ps, moves)
         if cat(ps) in cache:
