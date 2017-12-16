@@ -17,6 +17,7 @@
 - [Day 13: Packet Scanners](https://adventofcode.com/2017/day/13) | [solution](/2017/thirteen.py)
 - [Day 14: Disk Defragmentation](https://adventofcode.com/2017/day/14) | [solution](/2017/fourteen.py)
 - [Day 15: Dueling Generators](https://adventofcode.com/2017/day/15) | [solution](/2017/fifteen.py)
+- [Day 16: Permutation Promenade](https://adventofcode.com/2017/day/16) | [solution](/2017/sixteen.py)
 
 ## 2016
 - [Day 1: No Time for a Taxicab](https://adventofcode.com/2016/day/1) | [solution](/2016/one.py)
