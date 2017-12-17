@@ -21,4 +21,4 @@
 - Day 17: [Spinlock](https://adventofcode.com/2017/day/17) | Solutions: [Python](/2017/seventeen.py)
 
 ## 2016
-- [Day 1: No Time for a Taxicab](https://adventofcode.com/2016/day/1) | [Python](/2016/one.py)
+- Day 1: [No Time for a Taxicab](https://adventofcode.com/2016/day/1) | Solutions: [Python](/2016/one.py)
