@@ -19,6 +19,7 @@
 - Day 15: [Dueling Generators](https://adventofcode.com/2017/day/15) | Solutions: [Python](/2017/fifteen.py)
 - Day 16: [Permutation Promenade](https://adventofcode.com/2017/day/16) | Solutions: [Python](/2017/sixteen.py)
 - Day 17: [Spinlock](https://adventofcode.com/2017/day/17) | Solutions: [Python](/2017/seventeen.py)
+- Day 18: [Duet](https://adventofcode.com/2017/day/18) | Solutions: [Python](/2017/eighteen.py)
 
 ## 2016
 - Day 1: [No Time for a Taxicab](https://adventofcode.com/2016/day/1) | Solutions: [Python](/2016/one.py)
