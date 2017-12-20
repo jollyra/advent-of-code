@@ -2,7 +2,6 @@
 
 
 from util import *
-from collections import defaultdict
 from functools import partial
 import threading
 import sys
@@ -10,7 +9,8 @@ import queue
 
 
 def proc(seq, pid, in_q, out_q):
-    regs = defaultdict(int)
+    regs = reset_regs(seq)
+    print(regs)
     regs['p'] = pid
     send_count = 0
     ip = 0
@@ -18,41 +18,20 @@ def proc(seq, pid, in_q, out_q):
     while 0 <= ip < len(seq):
         ins = seq[ip]
         cmd = ins[0]
+        arg0 = regs.get(ins[1], ins[1]) if ins[1] else None
+        arg1 = regs.get(ins[2], ins[2]) if len(ins) is 3 else None
         if cmd == 'snd':
-            if isinstance(ins[1], int):
-                out_q.put(ins[1])
-            else:
-                out_q.put(regs[ins[1]])
+            print(ins)
+            out_q.put(arg0)
             send_count += 1
-            ip += 1
         elif cmd == 'set':
-            assert(ins[1].isalpha())
-            if isinstance(ins[2], int):
-                regs[ins[1]] = ins[2]
-            else:
-                regs[ins[1]] = regs[ins[2]]
-            ip += 1
+            regs[ins[1]] = arg1
         elif cmd == 'add':
-            assert(ins[1].isalpha())
-            if isinstance(ins[2], int):
-                regs[ins[1]] += ins[2]
-            else:
-                regs[ins[1]] += regs[ins[2]]
-            ip += 1
+            regs[ins[1]] += arg1
         elif cmd == 'mul':
-            assert(ins[1].isalpha())
-            if isinstance(ins[2], int):
-                regs[ins[1]] *= ins[2]
-            else:
-                regs[ins[1]] *= regs[ins[2]]
-            ip += 1
+            regs[ins[1]] *= arg1
         elif cmd == 'mod':
-            assert(ins[1].isalpha())
-            if isinstance(ins[2], int):
-                regs[ins[1]] = regs[ins[1]] % ins[2]
-            else:
-                regs[ins[1]] = regs[ins[1]] % regs[ins[2]]
-            ip += 1
+            regs[ins[1]] = arg0 % arg1
         elif cmd == 'rcv':
             assert(ins[1].isalpha())
             try:
@@ -61,28 +40,17 @@ def proc(seq, pid, in_q, out_q):
                 print(f'recieved {x} queue size {in_q.qsize()}')
                 assert(ins[1].isalpha())
                 regs[ins[1]] = x
-                ip += 1
             except queue.Empty:
                 print(f'pid {pid} send count is {send_count}')
                 return send_count
         elif cmd == 'jgz':
-            if isinstance(ins[1], int):
-                if ins[1] > 0:
-                    if isinstance(ins[2], int):
-                        ip += ins[2]
-                    else:
-                        ip += regs[ins[2]]
-                else:
-                    ip += 1
-            else:
-                assert(ins[1].isalpha())
-                if regs[ins[1]] > 0:
-                    if isinstance(ins[2], int):
-                        ip += ins[2]
-                    else:
-                        ip += regs[ins[2]]
-                else:
-                    ip += 1
+            if arg0 > 0:
+                ip += arg1
+                continue
+        else:
+            raise Exception(f'unrecognized command {cmd}')
+
+        ip += 1
 
 
 def parse(instructions):
@@ -102,6 +70,10 @@ def parse(instructions):
             except ValueError:
                 continue
     return instructions
+
+
+def reset_regs(seq):
+    return {el[1]: 0 for el in seq if not isinstance(el[1], int)}
 
 
 if __name__ == '__main__':
