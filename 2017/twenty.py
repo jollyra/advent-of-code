@@ -1,22 +1,26 @@
 #! /usr/bin/env python3
-''' start: 5:35 '''
 
 
 import re
+import math
 from collections import namedtuple
-from util import manhattan_distance_3d
-from pprint import pprint
 
 
 Particle = namedtuple('Particle', ['p', 'v', 'a'])
 Vector = namedtuple('Vector', ['x', 'y', 'z'])
 
 
-def main(particles):
-    for i in range(1000000000):
+def slowest(particles):
+    sorted_particles = sorted(particles, key=lambda x: magnitude(x.a))
+    slowest = sorted_particles[0]
+    return particles.index(slowest)
+
+
+def simulate(particles):
+    for i in range(50):
         particles = detect_collisions(particles)
         particles = [update(p) for p in particles]
-        pprint(f'{i} # of particles {len(particles)}')
+        print(f'clock={i}, # of particles: {len(particles)}')
 
 
 def detect_collisions(particles):
@@ -27,22 +31,26 @@ def detect_collisions(particles):
         else:
             positions[p.p] = [i]
 
-    # pprint(positions)
+    collisions = []
     for pos, ps in positions.items():
         if len(ps) > 1:
-            print(f'collision {ps}')
-            for p in ps[::-1]:
-                del particles[p]
+            print(f'BOOM! {ps}')
+            collisions.extend(ps)
+
+    for idx in collisions[::-1]:
+        del particles[idx]
 
     return particles
 
 
-def accel_vector(particle):
-    return manhattan_distance_3d((0, 0, 0), particle.a)
+def manhattan_dist(v):
+    x, y, z = v
+    return abs(x) + abs(y) + abs(z)
 
 
-def manhattan_dist(particle):
-    return manhattan_distance_3d((0, 0, 0), particle.p)
+def magnitude(v):
+    x, y, z = v
+    return math.sqrt(x**2 + y**2 + z**2)
 
 
 def update(particle):
@@ -70,6 +78,6 @@ def parse(i, line):
 
 
 if __name__ == '__main__':
-    print('')
     particles = Input()
-    main(particles)
+    print('part 1:', slowest(particles))
+    simulate(particles)
