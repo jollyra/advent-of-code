@@ -22,6 +22,8 @@
 - Day 18: [Duet](https://adventofcode.com/2017/day/18) | Solutions: [Python](/2017/eighteen.py)
 - Day 19: [A Series of Tubes](https://adventofcode.com/2017/day/19) | Solutions: [Python](/2017/nineteen.py)
 - Day 20: [Particle Swarm](https://adventofcode.com/2017/day/20) | Solutions: [Python](/2017/twenty.py)
+- Day 21: [Fractal Art](https://adventofcode.com/2017/day/21) | Solutions: [Python](/2017/twentyone.py)
+- Day 22: [Sporifica Virus](https://adventofcode.com/2017/day/22) | Solutions: [Python](/2017/twentytwo.py)
 
 ## 2016
 - Day 1: [No Time for a Taxicab](https://adventofcode.com/2016/day/1) | Solutions: [Python](/2016/one.py)
