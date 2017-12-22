@@ -5,7 +5,7 @@ def virus(G, p, iterations):
     direction = (0, -1)
     infected = 0
     for i in range(iterations):
-        cell = G.setdefault(p, '.')
+        cell = G.get(p, '.')
         if cell == '#':
             direction = rotate(direction, 'R')
             G[p] = 'F'
@@ -40,11 +40,7 @@ def get_start(raw):
 
 
 def parse(seqs):
-    G = {}
-    for y in range(len(seqs)):
-        for x in range(len(seqs[y])):
-            G[(x, y)] = seqs[y][x]
-    return G
+    return {(x, y): seqs[y][x] for y in range(len(seqs)) for x in range(len(seqs[y]))}
 
 
 def Input():
@@ -53,6 +49,9 @@ def Input():
 
 
 if __name__ == '__main__':
+    G_test = {(0, 2): '#', (1, 0): '#'}
+    assert virus(G_test.copy(), (1, 1), 100) == 26
+
     raw = Input()
     start_point = get_start(raw)
     G = parse(raw)
