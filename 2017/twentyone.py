@@ -1,7 +1,9 @@
 #! /usr/bin/env python3
 
 
-from util import chunks, cat
+import sys
+from util import *
+from pprint import pprint
 
 
 def main(incomplete_rules, pattern, iterations):
@@ -127,4 +129,19 @@ if __name__ == '__main__':
     print('')
     starting_pattern = ('.#.', '..#', '###')
     rules = Input()
+    # ans = main(rules, starting_pattern, 5)
     ans = main(rules, starting_pattern, 18)
+
+    # print('ans:', ans)
+
+    # mat_test_2 = ['#..#', '....', '....', '#..#']
+    # show(mat_test_2)
+    # mat_chunked_2 = square_chunks(mat_test_2, 2)
+    # square = combine_squares(mat_chunked_2)
+    # show(square)
+    # print()
+    # mat_test_3 = ['##.##.', '#..#..', '......', '##.##.', '#..#..', '......']
+    # show(mat_test_3)
+    # mat_chunked_3 = square_chunks(mat_test_3, 3)
+    # square = combine_squares(mat_chunked_3)
+    # show(square)
