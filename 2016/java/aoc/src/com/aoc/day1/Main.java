@@ -1,9 +1,11 @@
-package com.company;
+package com.aoc.day1;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
+import com.aoc.util.Pair;
+import com.aoc.util.Point;
 
 public class Main {
 
@@ -41,13 +43,13 @@ public class Main {
 }
 
 class Traveller {
-    Heading heading;
+    Point heading;
     ArrayList<Pair<String, Integer>> dirs;
     Point pos = new Point(0, 0);
     List<Point> visited;
 
     public Traveller(ArrayList<Pair<String, Integer>> dirs) {
-        heading = new Heading();
+        heading = new Point(0, 1);
         this.dirs = dirs;
         visited = new ArrayList<>();
     }
@@ -56,13 +58,13 @@ class Traveller {
         pos = new Point(0, 0);
         for (Pair<String, Integer> p : dirs) {
             if(p.L.equals("L")) {
-                heading.rotL();
+                heading = Point.rotL(heading);
             } else if(p.L.equals("R")) {
-                heading.rotR();
+                heading = Point.rotR(heading);
             } else {
                 throw new Error("unrecognized direction: " + p.L);
             }
-            pos = Point.add(pos, Point.mul(heading.getHeading(), p.R));
+            pos = Point.add(pos, Point.mul(heading, p.R));
         }
         return pos;
     }
@@ -75,15 +77,15 @@ class Traveller {
         pos = new Point(0, 0);
         for (Pair<String, Integer> p : dirs) {
             if(p.L.equals("L")) {
-                heading.rotL();
+                heading = Point.rotL(heading);
             } else if(p.L.equals("R")) {
-                heading.rotR();
+                heading = Point.rotR(heading);
             } else {
                 throw new Error("unrecognized direction: " + p.L);
             }
 
             for(int i=0; i<p.R; i++) {
-                pos = Point.add(pos, heading.getHeading());
+                pos = Point.add(pos, heading);
                 if(visited.contains(pos)) {
                     return pos;
                 } else {
@@ -92,70 +94,5 @@ class Traveller {
             }
         }
         return null;
-    }
-}
-
-class Pair<L, R> {
-
-    public L L;
-    public R R;
-
-    public Pair(L left, R right) {
-        L = left;
-        R = right;
-    }
-
-    public String toString() {
-        return "(" + L.toString() + ", " + R.toString() + ")";
-    }
-}
-
-class Point {
-    int x;
-    int y;
-
-    public Point(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
-
-    public static Point add(Point a, Point b) {
-        return new Point(a.x + b.x, a.y + b.y);
-    }
-
-    public static Point mul(Point a, int x) {
-        return new Point(x * a.x, x * a.y);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Point point = (Point) o;
-        return x == point.x && y == point.y;
-    }
-
-    public String toString() {
-        return "(" + x + ", " + y + ")";
-    }
-}
-
-class Heading {
-    Point v;
-
-    public Heading() {
-         v = new Point(0, 1);
-    }
-
-    public void rotR() {
-        this.v = new Point(v.y, -v.x);
-    }
-
-    public void rotL() {
-        this.v = new Point(-v.y, v.x);
-    }
-
-    public Point getHeading() {
-        return v;
     }
 }
