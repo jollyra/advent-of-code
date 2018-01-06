@@ -1,4 +1,4 @@
-java/aoc/out/*
+2016/java/aoc/out/
 .DS_STORE
 *.iml
 .idea
