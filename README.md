@@ -24,7 +24,7 @@
 - Day 20: [Particle Swarm](https://adventofcode.com/2017/day/20) | Solutions: [Python](/2017/twenty.py)
 - Day 21: [Fractal Art](https://adventofcode.com/2017/day/21) | Solutions: [Python](/2017/twentyone.py)
 - Day 22: [Sporifica Virus](https://adventofcode.com/2017/day/22) | Solutions: [Python](/2017/twentytwo.py)
-- Day 23: [Coprocessor Conflagration](https://adventofcode.com/2017/day/23) | Solutions: [Python](/2017/twentythree.py)
+- Day 23: [Coprocessor Conflagration](https://adventofcode.com/2017/day/23) | Solutions: [Python part 1](/2017/twentythree.py), [Python part 2](/2017/twentythree_partb.py)
 - Day 24: [Electromagnetic Moat](https://adventofcode.com/2017/day/24) | Solutions: [Python](/2017/twentyfour.py)
 - Day 25: [The Halting Problem](https://adventofcode.com/2017/day/25) | Solutions: [Python](/2017/twentyfive.py)
 
