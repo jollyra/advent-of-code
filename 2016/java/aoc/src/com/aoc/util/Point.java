@@ -1,5 +1,7 @@
 package com.aoc.util;
 
+import java.util.Objects;
+
 public class Point {
     public int x;
     public int y;
@@ -23,6 +25,11 @@ public class Point {
 
     public static Point rotL(Point p) {
         return new Point(-p.y, p.x);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
     }
 
     @Override
