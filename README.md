@@ -31,3 +31,4 @@
 ## 2016
 - Day 1: [No Time for a Taxicab](https://adventofcode.com/2016/day/1) | Solutions: [Python](/2016/one.py), [Java](/2016/java/aoc/src/com/aoc/day1/Main.java)
 - Day 2: [Bathroom Security](https://adventofcode.com/2016/day/2) | Solutions: [Java](/2016/java/aoc/src/com/aoc/day2/Main.java)
+- Day 3: [Squares With Three Sides](https://adventofcode.com/2016/day/3) | Solutions: [Java](/2016/java/aoc/src/com/aoc/day3/Main.java)
