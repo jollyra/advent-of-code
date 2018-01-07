@@ -29,4 +29,5 @@
 - Day 25: [The Halting Problem](https://adventofcode.com/2017/day/25) | Solutions: [Python](/2017/twentyfive.py)
 
 ## 2016
-- Day 1: [No Time for a Taxicab](https://adventofcode.com/2016/day/1) | Solutions: [Python](/2016/one.py), [Java](/2016/java/day1/src/com/company/Main.java)
+- Day 1: [No Time for a Taxicab](https://adventofcode.com/2016/day/1) | Solutions: [Python](/2016/one.py), [Java](/2016/java/aoc/src/com/aoc/day1/Main.java)
+- Day 2: [Bathroom Security](https://adventofcode.com/2016/day/2) | Solutions: [Java](/2016/java/aoc/src/com/aoc/day2/Main.java)
