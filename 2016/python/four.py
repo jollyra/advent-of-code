@@ -6,22 +6,23 @@ from collections import namedtuple, Counter
 
 Room = namedtuple('Room', ['name', 'sector', 'checksum'])
 cat = ''.join
+alphabet = 'abcdefghijklmnopqrstuvwxyz'
 
 
 def main():
-    rooms = input()
     assert isvalid(parse('aaaaa-bbb-z-y-x-123[abxyz]')) is True
     assert isvalid(parse('totally-real-room-200[decoy]')) is False
-    assert ShiftCipher('qzmt-zixmtkozy-ivhz').decrypt(343) == 'very-encrypted-name'
+    assert ShiftCipher(alphabet).decrypt('qzmt-zixmtkozy-ivhz', 343) == 'very-encrypted-name'
     print('pass')
 
+    rooms = [parse(line) for line in input()]
     valid_rooms = [room for room in rooms if isvalid(room)]
     ans = sum([room.sector for room in valid_rooms])
     print(f'part 1: {ans}')
 
     for room in valid_rooms:
-        shift_cipher = ShiftCipher(room.name)
-        decrypted_name = shift_cipher.decrypt(room.sector)
+        shift_cipher = ShiftCipher(alphabet)
+        decrypted_name = shift_cipher.decrypt(room.name, room.sector)
         print(f'{decrypted_name}: {room}')
 
 
@@ -35,13 +36,11 @@ def isvalid(room):
 
 
 class ShiftCipher:
-    alphabet = 'abcdefghijklmnopqrstuvwxyz'
+    def __init__(self, alphabet):
+        self.alphabet = alphabet
 
-    def __init__(self, ciphertext):
-        self.ciphertext = list(ciphertext)
-
-    def decrypt(self, rotation):
-        plaintext = self.ciphertext[:]
+    def decrypt(self, ciphertext, rotation):
+        plaintext = list(ciphertext[:])
         for cur, char in enumerate(plaintext):
             if char not in self.alphabet:
                 continue
@@ -61,8 +60,9 @@ def parse(line):
 
 
 def input():
-    with open('2_input.txt', 'r') as f:
-        return [parse(line.strip()) for line in f]
+    with open('4_input.txt', 'r') as f:
+        for line in f:
+            yield line.strip()
 
 
 if __name__ == '__main__':
