@@ -1,9 +1,8 @@
 # Advent of Code
-[Advent of Code](http://adventofcode.com/) solutions in Python
+My [Advent of Code](http://adventofcode.com/) solutions.
 
 ## 2017
 
-[![Python](/images/pythonlogo.png)]
 1. [Inverse Captcha](https://adventofcode.com/2017/day/1) | [![Python](/images/pythonlogo.png)](/2017/one.py)
 1. [Corruption Checksum](https://adventofcode.com/2017/day/2) | [![Python](/images/pythonlogo.png)](/2017/two_a.py), [![Python](/images/pythonlogo.png)](/2017/two_b.py)
 1. [Spiral Memory](https://adventofcode.com/2017/day/3) | [![Python](/images/pythonlogo.png)](/2017/three_a.py), [![Python](/images/pythonlogo.png)](/2017/three_b.py)
