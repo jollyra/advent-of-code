@@ -30,7 +30,7 @@ My [Advent of Code](http://adventofcode.com/) solutions.
 1. [The Halting Problem](https://adventofcode.com/2017/day/25) | [![Python](/images/pythonlogo.png)](/2017/twentyfive.py)
 
 ## 2016
-1. [No Time for a Taxicab](https://adventofcode.com/2016/day/1) | [![Python](/images/pythonlogo.png), [![Java](/images/javalogo.png)](/2016/java/aoc/src/com/aoc/day1/Main.java)
+1. [No Time for a Taxicab](https://adventofcode.com/2016/day/1) | [![Python](/images/pythonlogo.png)](/2016/python/one.py), [![Java](/images/javalogo.png)](/2016/java/aoc/src/com/aoc/day1/Main.java)
 1. [Bathroom Security](https://adventofcode.com/2016/day/2) | [![Java](/images/javalogo.png)](/2016/java/aoc/src/com/aoc/day2/Main.java)
 1. [Squares With Three Sides](https://adventofcode.com/2016/day/3) | [![Java](/images/javalogo.png)](/2016/java/aoc/src/com/aoc/day3/Main.java)
 1. [Security Through Obscurity](https://adventofcode.com/2016/day/4) | [![Python](/images/pythonlogo.png)](/2016/python/four.py)
