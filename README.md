@@ -37,3 +37,4 @@ My [Advent of Code](http://adventofcode.com/) solutions.
 
 ## 2015
 1. [Not Quite Lisp](https://adventofcode.com/2015/day/1) | [![Python](/images/pythonlogo.png)](/2015/python/one.py)
+1. [I Was Told There Would Be No Math](https://adventofcode.com/2015/day/2) | [![Python](/images/pythonlogo.png)](/2015/python/two.py)
