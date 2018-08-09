@@ -2,7 +2,6 @@
 
 
 import sys
-from collections import deque, defaultdict, namedtuple
 
 
 def part_one(commands):
@@ -23,34 +22,26 @@ def part_one(commands):
 
 
 def part_two(commands):
-    x0, y0 = 0, 0
-    x1, y1 = 0, 0
+    santa = [0, 0]
+    robosanta = [0, 0]
     visited = set()
-    visited.add((x0, y0))
+    visited.add(tuple(santa))
+    cur_santa = santa
     for count, command in enumerate(list(commands)):
         if count % 2 == 0:
-            x = x0
-            y = y0
+            cur_santa = santa
         else:
-            x = x1
-            y = y1
+            cur_santa = robosanta
         if command == '^':
-            y -= 1
+            cur_santa[1] -= 1
         elif command == '>':
-            x += 1
+            cur_santa[0] += 1
         elif command == 'v':
-            y += 1
+            cur_santa[1] += 1
         elif command == '<':
-            x -= 1
-        visited.add((x, y))
-        if count % 2 == 0:
-            x0 = x
-            y0 = y
-        else:
-            x1 = x
-            y1 = y
+            cur_santa[0] -= 1
+        visited.add(tuple(cur_santa))
     return len(visited)
-
 
 
 def input_line(filename):
