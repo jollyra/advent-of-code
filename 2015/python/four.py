@@ -15,9 +15,8 @@ def mine(secret):
 
 
 if __name__ == '__main__':
-    # assert mine('abcdef') == 609043
-    # assert mine('pqrstuv') == 1048970
+    assert mine('abcdef') == 609043
+    assert mine('pqrstuv') == 1048970
     print('pass')
-
     ans = mine('iwrupvqb')
     print('ans: {}'.format(ans))
