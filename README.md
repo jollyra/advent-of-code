@@ -42,4 +42,5 @@ My [Advent of Code](http://adventofcode.com/) solutions.
 1. [The Ideal Stocking Stuffer](https://adventofcode.com/2015/day/4) | [![Python](/images/pythonlogo.png)](/2015/python/four.py)
 1. [Doesn't He Have Intern-Elves For This?](https://adventofcode.com/2015/day/5) | [![Python](/images/pythonlogo.png)](/2015/python/five.py)
 1. [Probably a Fire Hazard](https://adventofcode.com/2015/day/6) | [![Python](/images/pythonlogo.png)](/2015/python/six.py)
-1. [Probably a Fire Hazard](https://adventofcode.com/2015/day/7) | [![Python](/images/pythonlogo.png)](/2015/python/seven.py)
+1. [Some Assembly Required](https://adventofcode.com/2015/day/7) | [![Python](/images/pythonlogo.png)](/2015/python/seven.py)
+1. [Matchsticks](https://adventofcode.com/2015/day/8) | [![Python](/images/pythonlogo.png)](/2015/python/eight.py)
