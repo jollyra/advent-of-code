@@ -14,7 +14,7 @@ My [Advent of Code](http://adventofcode.com/) solutions.
 1. [Stream Processing](https://adventofcode.com/2017/day/9) | [![Python](/images/pythonlogo.png)](/2017/nine.py)
 1. [Knot Hash](https://adventofcode.com/2017/day/10) | [![Python](/images/pythonlogo.png)](/2017/knot_hash.py)
 1. [Hex Ed](https://adventofcode.com/2017/day/11) | [![Python](/images/pythonlogo.png)](/2017/eleven.py)
-1. [Digital Plumber](https://adventofcode.com/2017/day/12) | [![Python](/images/pythonlogo.png)](/2017/twelve.py)
+1. [Digital Plumber](https://adventofcode.com/2017/day/12) | [![Python](/images/pythonlogo.png)](/2017/twelve.py) Topics: graph theory, dfs, forest, undirected graph
 1. [Packet Scanners](https://adventofcode.com/2017/day/13) | [![Python](/images/pythonlogo.png)](/2017/thirteen.py)
 1. [Disk Defragmentation](https://adventofcode.com/2017/day/14) | [![Python](/images/pythonlogo.png)](/2017/fourteen.py)
 1. [Dueling Generators](https://adventofcode.com/2017/day/15) | [![Python](/images/pythonlogo.png)](/2017/fifteen.py)
