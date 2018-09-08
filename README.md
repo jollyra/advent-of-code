@@ -36,7 +36,7 @@ My [Advent of Code](http://adventofcode.com/) solutions.
 1. [Security Through Obscurity](https://adventofcode.com/2016/day/4) | [![Python](/images/pythonlogo.png)](/2016/python/four.py)
 
 ## 2015
-1. [Not Quite Lisp](https://adventofcode.com/2015/day/1) | [![Python](/images/pythonlogo.png)](/2015/python/one.py) [![Go](/images/gopher.ico)](https://github.com/jollyra/advent-of-go/blob/master/not_quite_lisp.go)
+1. [Not Quite Lisp](https://adventofcode.com/2015/day/1) | [![Python](/images/pythonlogo.png)](/2015/python/one.py) [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/not_quite_lisp.go)
 1. [I Was Told There Would Be No Math](https://adventofcode.com/2015/day/2) | [![Python](/images/pythonlogo.png)](/2015/python/two.py)
 1. [Perfectly Spherical Houses in a Vacuum](https://adventofcode.com/2015/day/3) | [![Python](/images/pythonlogo.png)](/2015/python/three.py)
 1. [The Ideal Stocking Stuffer](https://adventofcode.com/2015/day/4) | [![Python](/images/pythonlogo.png)](/2015/python/four.py)
