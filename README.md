@@ -36,7 +36,7 @@ My [Advent of Code](http://adventofcode.com/) solutions.
 1. [Security Through Obscurity](https://adventofcode.com/2016/day/4) | [![Python](/images/pythonlogo.png)](/2016/python/four.py)
 
 ## 2015
-1. [Not Quite Lisp](https://adventofcode.com/2015/day/1) | [![Python](/images/pythonlogo.png)](/2015/python/one.py) [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/not_quite_lisp.go)
+1. [Not Quite Lisp](https://adventofcode.com/2015/day/1) | [![Python](/images/pythonlogo.png)](/2015/python/one.py) [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2015d1/not_quite_lisp.go)
 1. [I Was Told There Would Be No Math](https://adventofcode.com/2015/day/2) | [![Python](/images/pythonlogo.png)](/2015/python/two.py)
 1. [Perfectly Spherical Houses in a Vacuum](https://adventofcode.com/2015/day/3) | [![Python](/images/pythonlogo.png)](/2015/python/three.py)
 1. [The Ideal Stocking Stuffer](https://adventofcode.com/2015/day/4) | [![Python](/images/pythonlogo.png)](/2015/python/four.py)
@@ -44,3 +44,9 @@ My [Advent of Code](http://adventofcode.com/) solutions.
 1. [Probably a Fire Hazard](https://adventofcode.com/2015/day/6) | [![Python](/images/pythonlogo.png)](/2015/python/six.py)
 1. [Some Assembly Required](https://adventofcode.com/2015/day/7) | [![Python](/images/pythonlogo.png)](/2015/python/seven.py)
 1. [Matchsticks](https://adventofcode.com/2015/day/8) | [![Python](/images/pythonlogo.png)](/2015/python/eight.py)
+1. [All in a Single Night](https://adventofcode.com/2015/day/9) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2015d9/9.go)
+1. [Elves Look, Elves Say](https://adventofcode.com/2015/day/10) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2015d10/look_and_say.go)
+1. [Corporate Policy](https://adventofcode.com/2015/day/11) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2015d11/corperate_policy.go)
+1. [JSAbacusFramework.io](https://adventofcode.com/2015/day/12) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2015d12/js_abacus_framework.go)
+1. [Knights of the Dinner Table](https://adventofcode.com/2015/day/13) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2015d13/knights_of_the_dinner_table.go)
+1. [Reindeer Olympics](https://adventofcode.com/2015/day/14) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2015d14/14.go)
