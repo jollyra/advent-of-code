@@ -51,3 +51,4 @@ My [Advent of Code](http://adventofcode.com/) solutions.
 1. [Knights of the Dinner Table](https://adventofcode.com/2015/day/13) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2015d13/knights_of_the_dinner_table.go)
 1. [Reindeer Olympics](https://adventofcode.com/2015/day/14) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2015d14/14.go)
 1. [Science for Hungry People](https://adventofcode.com/2015/day/15) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2015d15/15.go)
+1. [Aunt Sue](https://adventofcode.com/2015/day/16) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2015d16/16.go)
