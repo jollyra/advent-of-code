@@ -52,3 +52,7 @@ My [Advent of Code](http://adventofcode.com/) solutions.
 1. [Reindeer Olympics](https://adventofcode.com/2015/day/14) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2015d14/14.go)
 1. [Science for Hungry People](https://adventofcode.com/2015/day/15) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2015d15/15.go)
 1. [Aunt Sue](https://adventofcode.com/2015/day/16) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2015d16/16.go)
+1. [No Such Thing as Too Much](https://adventofcode.com/2015/day/17) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2015d17/17.go)
+1. [Like a GIF For Your Yard](https://adventofcode.com/2015/day/18) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2015d18/18.go)
+1. [Medicine for Rudolph](https://adventofcode.com/2015/day/19) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2015d19/19.go)
+1. [Infinite Elves and Infinite Houses](https://adventofcode.com/2015/day/20) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2015d20/20.go)
