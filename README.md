@@ -1,6 +1,10 @@
 # Advent of Code
 My [Advent of Code](http://adventofcode.com/) solutions.
 
+## 2018
+
+1. [Chronal Calibration](https://adventofcode.com/2018/day/1) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d1/1.go)
+
 ## 2017
 
 1. [Inverse Captcha](https://adventofcode.com/2017/day/1) | [![Python](/images/pythonlogo.png)](/2017/one.py)
