@@ -6,8 +6,8 @@ My [Advent of Code](http://adventofcode.com/) solutions.
 1. [Chronal Calibration](https://adventofcode.com/2018/day/1) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d1/1.go)
 1. [Inventory Management System](https://adventofcode.com/2018/day/2) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d2/2.go)
 1. [No Matter How You Slice It](https://adventofcode.com/2018/day/3) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d3/3.go)
-1. [Repose Record](https://adventofcode.com/2018/day/4) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d4/4.go)
-1. [Alchemical Reduction](https://adventofcode.com/2018/day/5) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d5/5.go)
+1. [Repose Record](https://adventofcode.com/2018/day/4) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d4/4.go) Topics: schedule aggregation, event stream, date parsing
+1. [Alchemical Reduction](https://adventofcode.com/2018/day/5) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d5/5.go) Topics: string reduction, uppercase lowercase conversion
 
 ## 2017
 
