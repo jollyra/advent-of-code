@@ -3,15 +3,15 @@ My [Advent of Code](http://adventofcode.com/) solutions.
 
 ## 2018
 
-1. [Chronal Calibration](https://adventofcode.com/2018/day/1) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d1/1.go)
-1. [Inventory Management System](https://adventofcode.com/2018/day/2) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d2/2.go)
-1. [No Matter How You Slice It](https://adventofcode.com/2018/day/3) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d3/3.go)
+1. [Chronal Calibration](https://adventofcode.com/2018/day/1) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d1/1.go) Topics: summing, reduce right
+1. [Inventory Management System](https://adventofcode.com/2018/day/2) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d2/2.go) Topics: checksum, string parsing
+1. [No Matter How You Slice It](https://adventofcode.com/2018/day/3) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d3/3.go) Topics: infinite grid, coordinate list, drawing rectangles, overlapping areas, area calculation
 1. [Repose Record](https://adventofcode.com/2018/day/4) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d4/4.go) Topics: schedule aggregation, event stream, date parsing
 1. [Alchemical Reduction](https://adventofcode.com/2018/day/5) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d5/5.go) Topics: string building, uppercase lowercase conversion
 1. [Chronal Coordinates](https://adventofcode.com/2018/day/6) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d6/6.go) Topics: coordinate list, infinite grid, floodfill, manhattan distance
-1. [The Sum of Its Parts](https://adventofcode.com/2018/day/7) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d7/7.go)
-1. [Memory Maneuver](https://adventofcode.com/2018/day/8) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d8/8.go)
-1. [Marble Mania](https://adventofcode.com/2018/day/9) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d9/9.go) Topics: double linked list, container/ring
+1. [The Sum of Its Parts](https://adventofcode.com/2018/day/7) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d7/7.go) Topics: dependency graph, parallel workers
+1. [Memory Maneuver](https://adventofcode.com/2018/day/8) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d8/8.go) Topics: recursion, n-ary tree traversal
+1. [Marble Mania](https://adventofcode.com/2018/day/9) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d9/9.go) Topics: doubly linked list, container/ring
 
 ## 2017
 
