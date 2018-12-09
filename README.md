@@ -9,6 +9,9 @@ My [Advent of Code](http://adventofcode.com/) solutions.
 1. [Repose Record](https://adventofcode.com/2018/day/4) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d4/4.go) Topics: schedule aggregation, event stream, date parsing
 1. [Alchemical Reduction](https://adventofcode.com/2018/day/5) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d5/5.go) Topics: string building, uppercase lowercase conversion
 1. [Chronal Coordinates](https://adventofcode.com/2018/day/6) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d6/6.go) Topics: coordinate list, infinite grid, floodfill, manhattan distance
+1. [The Sum of Its Parts](https://adventofcode.com/2018/day/7) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d7/7.go)
+1. [Memory Maneuver](https://adventofcode.com/2018/day/8) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d8/8.go)
+1. [Marble Mania](https://adventofcode.com/2018/day/9) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d9/9.go) Topics: double linked list, container/ring
 
 ## 2017
 
