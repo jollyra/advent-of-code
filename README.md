@@ -12,6 +12,7 @@ My [Advent of Code](http://adventofcode.com/) solutions.
 1. [The Sum of Its Parts](https://adventofcode.com/2018/day/7) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d7/7.go) Topics: dependency graph, parallel workers
 1. [Memory Maneuver](https://adventofcode.com/2018/day/8) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d8/8.go) Topics: recursion, n-ary tree traversal
 1. [Marble Mania](https://adventofcode.com/2018/day/9) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d9/9.go) Topics: doubly linked list, container/ring
+1. [The Stars Align](https://adventofcode.com/2018/day/10) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d10/main.go)
 
 ## 2017
 
