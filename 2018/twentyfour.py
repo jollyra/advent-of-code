@@ -148,10 +148,10 @@ def run_test_battle():
     battle_field = BattleField(immune_system_army, infection_army)
     battle(battle_field)
 
+
 def run_my_battle():
-    # def __init__(self, name, units, hp, immunities, weaknesses, attack, initiative):
     immune_system_army = Army('Immune System')
-    immune_system_army.add(Group('Group 1', 273, 8289, ['radiation', 'slashing'], ['bludgeoning'], Attack(261, 'cold damage'), 2))
+    immune_system_army.add(Group('Group 1', 273, 8289, ['bludgeoning'], ['radiation', 'slashing'], Attack(261, 'cold'), 2))
     immune_system_army.add(Group('Group 2', 2016, 10188, ['cold', 'bludgeoning'], ['slashing', 'radiation'],  Attack(47, 'bludgeoning'), 14))
     immune_system_army.add(Group('Group 3', 3638, 9600, [], ['fire', 'cold'],  Attack(26, 'radiation'), 18))
     immune_system_army.add(Group('Group 4', 4154, 3839, [], [],  Attack(9, 'slashing'), 7))
@@ -176,6 +176,7 @@ def run_my_battle():
 
     battle_field = BattleField(immune_system_army, infection_army)
     battle(battle_field)
+
 
 def main():
     run_test_battle()
