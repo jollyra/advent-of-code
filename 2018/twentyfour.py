@@ -52,14 +52,25 @@ class Army:
         units = 0
         for key in self.groups:
             group = self.groups[key]
-            s += f'{group}\n'
+            # s += f'{group}\n'
             units += group.units
-        s += f'total units: {units}\n'
+        s += f'total units: {units}'
         return s
 
     def add(self, group):
         self.groups[group.name] = group
         group.army = self.name
+
+    def total_units(self):
+        units = 0
+        for key in self.groups:
+            group = self.groups[key]
+            units += group.units
+        return units
+
+    def boost(self, x):
+        for groupname in self.groups:
+            self.groups[groupname].attack.damage += x
 
 
 class BattleField:
@@ -104,12 +115,12 @@ def fight(ag, dg):
     if casualties > dg.units:
         casualties = dg.units
     dg.units = dg.units - casualties
-    print(f'{ag.army} {ag.name} attacks {dg.army} {dg.name}, killing {casualties} units')
+    # print(f'{ag.army} {ag.name} attacks {dg.army} {dg.name}, killing {casualties} units')
 
 
 def battle(battle_field):
     while len(battle_field.immune_system_army.groups) != 0 and len(battle_field.infection_army.groups) != 0:
-        print('-------------------------------------------------------------------')
+        # print('-------------------------------------------------------------------')
         ordered_groups = sorted(battle_field.all_groups(), key=attack_order_sort_key)
         targeted_groups = []
         target_selections = []
@@ -129,10 +140,11 @@ def battle(battle_field):
 
         battle_field.clear_the_dead()
 
-    print('\n-------------------------------------------------------------------')
-    print('Battle finished!\n')
+    # print('\n-------------------------------------------------------------------')
+    # print('Battle finished!\n')
     print(battle_field.immune_system_army)
     print(battle_field.infection_army)
+    return battle_field.immune_system_army.total_units(), battle_field.infection_army.total_units()
 
 
 def run_test_battle():
@@ -149,7 +161,7 @@ def run_test_battle():
     battle(battle_field)
 
 
-def run_my_battle():
+def new_immune_system_army():
     immune_system_army = Army('Immune System')
     immune_system_army.add(Group('Group 1', 273, 8289, ['bludgeoning'], ['radiation', 'slashing'], Attack(261, 'cold'), 2))
     immune_system_army.add(Group('Group 2', 2016, 10188, ['cold', 'bludgeoning'], ['slashing', 'radiation'],  Attack(47, 'bludgeoning'), 14))
@@ -161,7 +173,10 @@ def run_my_battle():
     immune_system_army.add(Group('Group 8', 2246, 6792, [], ['bludgeoning'], Attack(27, 'cold'), 17))
     immune_system_army.add(Group('Group 9', 3246, 1380, ['cold'], ['radiation'], Attack(4, 'cold'), 5))
     immune_system_army.add(Group('Group 10', 5042, 10450, [],[], Attack(18, 'fire'), 11))
+    return immune_system_army
 
+
+def new_infection_army():
     infection_army = Army('Infection')
     infection_army.add(Group('Group 1', 982, 23562, [], [],  Attack(47, 'radiation'), 6))
     infection_army.add(Group('Group 2', 601, 44172, ['radiation'], [], Attack(120, 'fire'), 12))
@@ -173,9 +188,23 @@ def run_my_battle():
     infection_army.add(Group('Group 8', 8479, 23902, [], ['slashing', 'fire'], Attack(4, 'bludgeoning'), 13))
     infection_army.add(Group('Group 9', 2620, 11576, [], ['radiation', 'bludgeoning'], Attack(7, 'radiation'), 10))
     infection_army.add(Group('Group 10', 2107, 30838, [], ['radiation', 'fire'],  Attack(28, 'cold'), 20))
+    return infection_army
 
-    battle_field = BattleField(immune_system_army, infection_army)
-    battle(battle_field)
+
+def run_my_battle():
+    """ Loop through increasing boost values until the immune system army wins. """
+    for boost in range(31,100):
+        print(f'simulating battle with boost {boost}')
+        immune_system_army = new_immune_system_army()
+        immune_system_army.boost(boost)
+        infection_army = new_infection_army()
+        battle_field = BattleField(immune_system_army, infection_army)
+
+        immune_units_left, infection_units_left = battle(battle_field)
+        if immune_units_left > 0:
+            print(f'immune system army won with boost {boost} and {immune_units_left} units left')
+            return 
+        print()
 
 
 def main():
