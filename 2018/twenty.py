@@ -1,14 +1,7 @@
-from collections import defaultdict
-
-
 def neighbours_diagonal(point):
     'Only diagonals returned in order quadrants I, II, III, IV (CCW).'
     x, y = point
     return [(x + 1, y + 1), (x - 1, y + 1), (x - 1, y - 1), (x + 1, y - 1)]
-
-
-def X(point): return point[0]
-def Y(point): return point[1]
 
 
 def east(point):
@@ -29,6 +22,10 @@ def west(point):
 def south(point):
     x, y = point
     return (x, y - 1)
+
+
+def X(point): return point[0]
+def Y(point): return point[1]
 
 
 def bounds(coords):
@@ -62,12 +59,6 @@ def render_map(coords):
         print()
 
 
-def find_current_location(coords):
-    for p, tile in coords.items():
-        if tile == 'X':
-            return p
-
-
 def step(coords, cur, direction):
     # Build the walls
     for p in neighbours_diagonal(cur):
@@ -92,16 +83,6 @@ def step(coords, cur, direction):
     return cur
 
 
-def build_map(coords, paths):
-    print('build_map')
-    for path in paths:
-        cur = (0, 0)
-        for d in path:
-            cur = step(coords, cur, d)
-    fill_unknowns_with_walls(coords)
-    return coords
-
-
 def find_matching_paren(re, i):
     parens = 0
     pipe_idxs = []
@@ -121,21 +102,18 @@ def find_matching_paren(re, i):
 
 def parse_regex(re):
     print('parse_regex')
-    paths = []
-    coords = {(0, 0): 'X'}
+    src = (0, 0)
+    coords = {src: 'X'}
 
-    def parse(re, path):
-        # print(re)
+    def parse(re, cur):
         i = 0
         while i < len(re):
-            # print(i, re[i], path, paths)
             if re[i] == '^':
                 i += 1
             if re[i] == '$':
-                paths.append(path)
                 return
             if re[i] in 'NSEW':
-                path += re[i]
+                cur = step(coords, cur, re[i])
                 i += 1
             if re[i] == '(':
                 open_paren_idx = i
@@ -151,22 +129,18 @@ def parse_regex(re):
                     q = 0
                     while q < len(pipe_idxs):
                         branch = re[p+1:pipe_idxs[q]]
-                        parse(branch + rest_of_re, path)
+                        parse(branch + rest_of_re, cur)
                         p = pipe_idxs[q]  # Move past the pipe we just used
                         q += 1
 
                     branch = re[pipe_idxs[-1]+1:close_paren_idx]
-                    parse(branch + rest_of_re, path)
+                    parse(branch + rest_of_re, cur)
 
                 return
 
-    parse(re, '')
-    return paths
-
-
-def neighbours4(point):
-    x, y = point
-    return [(x + 1, y), (x, y + 1), (x - 1, y), (x, y - 1)]
+    parse(re, src)
+    fill_unknowns_with_walls(coords)
+    return coords
 
 
 def bfs(coords, src):
@@ -194,22 +168,9 @@ def bfs(coords, src):
 
 def shortest_path_to_farthest_door(re):
     src = (0, 0)
-    coords = {src: 'X'}
-    paths = parse_regex(re)
-    coords = build_map(coords, paths)
+    coords = parse_regex(re)
     costs = bfs(coords, src)
     return max(costs.values())
-
-
-def test_parse_regex(re, want):
-    paths = parse_regex(re)
-    if len(paths) != len(want):
-        print(f'expected {want} got {paths}')
-        return False
-    if all(s in want for s in paths):
-        return True
-    print(f'expected {want} got {paths}')
-    return False
 
 
 def test_shortest_path(re, want):
@@ -225,11 +186,6 @@ def main():
     assert(find_matching_paren('^ENWWW(NEEE|SSE(EE|N))$', 6) == (21, [11]))
     assert(find_matching_paren('^ENWWW(NEEE|SSE(EE|N))$', 15) == (20, [18]))
     assert(find_matching_paren('^(NEWS|WNSE|)$', 1) == (12, [6, 11]))
-    assert(test_parse_regex('^N(E|W)N$', ['NEN', 'NWN']))
-    assert(test_parse_regex('^N(E|)N$', ['NEN', 'NN']))
-    assert(test_parse_regex('^ENWWW(NEEE|SSE(EE|N))$', ['ENWWWNEEE', 'ENWWWSSEEE', 'ENWWWSSEN']))
-    assert(test_parse_regex('^(NEWS|WNSE|NNNN)$', ['NEWS', 'WNSE', 'NNNN']))
-    assert(test_parse_regex('^(NEWS|WNSE|)$', ['NEWS', 'WNSE', '']))
     assert(test_shortest_path('^ENWWW(NEEE|SSE(EE|N))$', 10))
     assert(test_shortest_path('^WNE$', 3))
     assert(test_shortest_path('^ENNWSWW(NEWS|)SSSEEN(WNSE|)EE(SWEN|)NNN$', 18))
@@ -237,10 +193,10 @@ def main():
     assert(test_shortest_path('^WSSEESWWWNW(S|NENNEEEENN(ESSSSW(NWSW|SSEN)|WSWWN(E|WWS(E|SS))))$', 31))
     print('pass')
 
-    # with open('20_input.txt', 'r') as f:
-    #     re = f.read().strip()
-    #     print('\npart 1')
-    #     print(shortest_path_to_farthest_door(re))
+    with open('20_input.txt', 'r') as f:
+        re = f.read().strip()
+        print('\npart 1')
+        print(shortest_path_to_farthest_door(re))
 
 
 if __name__ == '__main__':
