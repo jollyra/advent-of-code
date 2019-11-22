@@ -127,20 +127,9 @@ class Node:
     def __repr__(self):
         return f'{self.id}'
 
+    @lru_cache(maxsize=None)
     def size(self):
-        print(self.id)
         return 1 + sum(n.size() for n in self.N)
-
-
-def shortest_path_to_farthest_door(re):
-    src = (0, 0)
-    node = parse_regex(re)
-    print('calculating size of tree...')
-    print(f'regex parsed. size of tree is {node.size()}')
-    # print_preorder_traversal(node)
-    coords = build_map(node)
-    costs = bfs(coords, src)
-    return max(costs.values())
 
 
 def print_preorder_traversal(node):
@@ -155,6 +144,7 @@ def build_map(node):
     coords = {cur: 'X'}
 
     # TODO: this is probably getting caught in cycles like node.size()
+    @lru_cache(maxsize=None)
     def preorder_traversal(node, current_point):
         for direction in node.v:
             current_point = step(coords, current_point, direction)
@@ -222,8 +212,24 @@ def bfs(coords, src):
     return costs
 
 
+def shortest_path_to_every_room(re):
+    src = (0, 0)
+    node = parse_regex(re)
+    print('calculating size of tree...')
+    print(f'regex parsed. size of tree is {node.size()}')
+    # print_preorder_traversal(node)
+    coords = build_map(node)
+    costs = bfs(coords, src)
+    return costs
+
+
+def shortest_path_to_farthest_room(costs):
+    return max(costs.values())
+
+
 def test_shortest_path(re, want):
-    got = shortest_path_to_farthest_door(re)
+    costs = shortest_path_to_every_room(re)
+    got = shortest_path_to_farthest_room(costs)
     if got == want:
         return True
     print(f'expected {want} got {cost}')
@@ -242,10 +248,13 @@ def main():
     assert(test_shortest_path('^WSSEESWWWNW(S|NENNEEEENN(ESSSSW(NWSW|SSEN)|WSWWN(E|WWS(E|SS))))$', 31))
     print('pass')
 
-    # with open('20_input.txt', 'r') as f:
-    #     re = f.read().strip()
-    #     print('\npart 1')
-    #     print(shortest_path_to_farthest_door(re))
+    with open('20_input.txt', 'r') as f:
+        re = f.read().strip()
+        print('\npart 1')
+        costs = shortest_path_to_every_room(re)
+        print('part 1: shortest path to furthest room is', shortest_path_to_farthest_room(costs))
+        print('part 2: number of shortest paths that pass through at least 1000 doors is',
+              len([p for p in costs.values() if p >= 1000]))
 
 
 if __name__ == '__main__':
