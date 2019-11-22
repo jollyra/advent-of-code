@@ -127,10 +127,16 @@ class Node:
     def __repr__(self):
         return f'{self.id}'
 
+    def size(self):
+        print(self.id)
+        return 1 + sum(n.size() for n in self.N)
+
 
 def shortest_path_to_farthest_door(re):
     src = (0, 0)
     node = parse_regex(re)
+    print('calculating size of tree...')
+    print(f'regex parsed. size of tree is {node.size()}')
     # print_preorder_traversal(node)
     coords = build_map(node)
     costs = bfs(coords, src)
@@ -148,6 +154,7 @@ def build_map(node):
     cur = (0, 0)
     coords = {cur: 'X'}
 
+    # TODO: this is probably getting caught in cycles like node.size()
     def preorder_traversal(node, current_point):
         for direction in node.v:
             current_point = step(coords, current_point, direction)
@@ -235,10 +242,10 @@ def main():
     assert(test_shortest_path('^WSSEESWWWNW(S|NENNEEEENN(ESSSSW(NWSW|SSEN)|WSWWN(E|WWS(E|SS))))$', 31))
     print('pass')
 
-    with open('20_input.txt', 'r') as f:
-        re = f.read().strip()
-        print('\npart 1')
-        print(shortest_path_to_farthest_door(re))
+    # with open('20_input.txt', 'r') as f:
+    #     re = f.read().strip()
+    #     print('\npart 1')
+    #     print(shortest_path_to_farthest_door(re))
 
 
 if __name__ == '__main__':
