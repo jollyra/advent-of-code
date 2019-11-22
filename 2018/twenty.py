@@ -86,23 +86,6 @@ def step(coords, cur, direction):
     return cur
 
 
-def find_matching_paren(re, i):
-    parens = 0
-    pipe_idxs = []
-    while i < len(re):
-        if re[i] == '(':
-            parens += 1
-        if re[i] == ')':
-            parens -= 1
-            if parens == 0:
-                return i, pipe_idxs
-        if re[i] == '|' and parens == 1:
-            pipe_idxs.append(i)
-        i += 1
-
-    return -1, []
-
-
 class Node:
     count = 0
 
@@ -132,18 +115,10 @@ class Node:
         return 1 + sum(n.size() for n in self.N)
 
 
-def print_preorder_traversal(node):
-    print(node)
-    for n in node.N:
-        print_preorder_traversal(n)
-
-
 def build_map(node):
-    print('build_map')
     cur = (0, 0)
     coords = {cur: 'X'}
 
-    # TODO: this is probably getting caught in cycles like node.size()
     @lru_cache(maxsize=None)
     def preorder_traversal(node, current_point):
         for direction in node.v:
@@ -156,15 +131,32 @@ def build_map(node):
     return coords
 
 
+def find_matching_paren(re, i):
+    parens = 0
+    pipe_idxs = []
+    while i < len(re):
+        if re[i] == '(':
+            parens += 1
+        if re[i] == ')':
+            parens -= 1
+            if parens == 0:
+                return i, pipe_idxs
+        if re[i] == '|' and parens == 1:
+            pipe_idxs.append(i)
+        i += 1
+
+    return -1, []
+
+
 @lru_cache(maxsize=None)
-def parse_regex(re):
+def build_nary_tree(re):
     i = 0
     node = Node()
     while i < len(re):
         if re[i] == '^':
             i += 1
         if re[i] == '$':
-            print(parse_regex.cache_info())
+            # print(build_nary_tree.cache_info())
             return node
         if re[i] in 'NSEW':
             node.add_value(re[i])
@@ -183,19 +175,18 @@ def parse_regex(re):
                 q = 0
                 while q < len(pipe_idxs):
                     branch = re[p+1:pipe_idxs[q]]
-                    node.add_child(parse_regex(branch + rest_of_re))
+                    node.add_child(build_nary_tree(branch + rest_of_re))
                     p = pipe_idxs[q]  # Move past the pipe we just used
                     q += 1
 
                 branch = re[pipe_idxs[-1]+1:close_paren_idx]
-                node.add_child(parse_regex(branch + rest_of_re))
+                node.add_child(build_nary_tree(branch + rest_of_re))
             return node
 
     return node
 
 
-def bfs(coords, src):
-    print('bfs')
+def djikstras(coords, src):
     horizon = [src]
     costs = {src: 0}
     while horizon:
@@ -213,13 +204,11 @@ def bfs(coords, src):
 
 
 def shortest_path_to_every_room(re):
-    src = (0, 0)
-    node = parse_regex(re)
-    print('calculating size of tree...')
-    print(f'regex parsed. size of tree is {node.size()}')
-    # print_preorder_traversal(node)
-    coords = build_map(node)
-    costs = bfs(coords, src)
+    tree = build_nary_tree(re)
+    size = tree.size()
+    print(f'regex parsed. size of tree is {size}')
+    coords = build_map(tree)
+    costs = djikstras(coords, (0, 0))
     return costs
 
 
@@ -250,7 +239,6 @@ def main():
 
     with open('20_input.txt', 'r') as f:
         re = f.read().strip()
-        print('\npart 1')
         costs = shortest_path_to_every_room(re)
         print('part 1: shortest path to furthest room is', shortest_path_to_farthest_room(costs))
         print('part 2: number of shortest paths that pass through at least 1000 doors is',
