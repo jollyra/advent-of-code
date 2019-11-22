@@ -145,11 +145,6 @@ def parse_regex(re):
                 rest_of_re = re[close_paren_idx+1:]
                 if len(pipe_idxs) == 0:
                     raise Exception(f'Paren match error: no pipes found')
-                elif len(pipe_idxs) == 1:
-                    branch_1 = re[open_paren_idx+1:pipe_idxs[0]]
-                    branch_2 = re[pipe_idxs[0]+1:close_paren_idx]
-                    parse(branch_1 + rest_of_re, path)
-                    parse(branch_2 + rest_of_re, path)
                 else:
                     p = open_paren_idx
                     q = 0
@@ -241,10 +236,10 @@ def main():
     assert(test_shortest_path('^WSSEESWWWNW(S|NENNEEEENN(ESSSSW(NWSW|SSEN)|WSWWN(E|WWS(E|SS))))$', 31))
     print('pass')
 
-    with open('20_input.txt', 'r') as f:
-        re = f.read().strip()
-        print('\npart 1')
-        print(shortest_path_to_farthest_door(re))
+    # with open('20_input.txt', 'r') as f:
+    #     re = f.read().strip()
+    #     print('\npart 1')
+    #     print(shortest_path_to_farthest_door(re))
 
 
 if __name__ == '__main__':
