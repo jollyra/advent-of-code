@@ -1,4 +1,3 @@
-from util import *
 from collections import defaultdict
 
 
@@ -6,6 +5,10 @@ def neighbours_diagonal(point):
     'Only diagonals returned in order quadrants I, II, III, IV (CCW).'
     x, y = point
     return [(x + 1, y + 1), (x - 1, y + 1), (x - 1, y - 1), (x + 1, y - 1)]
+
+
+def X(point): return point[0]
+def Y(point): return point[1]
 
 
 def east(point):
@@ -66,6 +69,7 @@ def find_current_location(coords):
 
 
 def build_map(coords, paths):
+    print('build_map')
     for path in paths:
         cur = (0, 0)
         for d in path:
@@ -116,6 +120,7 @@ def find_matching_paren(re, i):
 
 
 def parse_regex(re):
+    print('parse_regex')
     paths = []
 
     def parse(re, path):
@@ -169,9 +174,11 @@ def neighbours4(point):
 
 
 def bfs(coords, src):
+    print('bfs')
     horizon = [src]
     costs = {src: 0}
     while horizon:
+        # print(len(horizon))
         # print(f'horizon {horizon}')
         # print(f'costs {costs}')
         cur = horizon.pop(-1)
@@ -233,6 +240,11 @@ def main():
     assert(test_shortest_path('^ESSWWN(E|NNENN(EESS(WNSE|)SSS|WWWSSSSE(SW|NNNE)))$', 23))
     assert(test_shortest_path('^WSSEESWWWNW(S|NENNEEEENN(ESSSSW(NWSW|SSEN)|WSWWN(E|WWS(E|SS))))$', 31))
     print('pass')
+
+    with open('20_input.txt', 'r') as f:
+        re = f.read().strip()
+        print('\npart 1')
+        print(shortest_path_to_farthest_door(re))
 
 
 if __name__ == '__main__':
