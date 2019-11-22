@@ -65,34 +65,36 @@ def find_current_location(coords):
             return p
 
 
-def build_map(coords, dirs):
-    cur = (0, 0)
-    for d in dirs:
-        # Build the walls
-        for p in neighbours_diagonal(cur):
-            if p in coords:
-                if coords[p] != '#':
-                    raise Exception('diagonals should be walls {p}: {coords[p]}')
-            coords[p] = '#'
+def build_map(coords, paths):
+    for path in paths:
+        cur = (0, 0)
+        for d in path:
+            # Build the walls
+            for p in neighbours_diagonal(cur):
+                if p in coords:
+                    if coords[p] != '#':
+                        raise Exception('diagonals should be walls {p}: {coords[p]}')
+                coords[p] = '#'
 
-        # Move to new room
-        if d == 'E':
-            coords[east(cur)] = '|'
-            cur = east(east(cur))
-            coords[cur] = '.'
-        if d == 'N':
-            coords[north(cur)] = '-'
-            cur = north(north(cur))
-            coords[cur] = '.'
-        if d == 'W':
-            coords[west(cur)] = '|'
-            cur = west(west(cur))
-            coords[cur] = '.'
-        if d == 'S':
-            coords[south(cur)] = '-'
-            cur = south(south(cur))
-            coords[cur] = '.'
+            # Move to new room
+            if d == 'E':
+                coords[east(cur)] = '|'
+                cur = east(east(cur))
+                coords[cur] = '.'
+            if d == 'N':
+                coords[north(cur)] = '-'
+                cur = north(north(cur))
+                coords[cur] = '.'
+            if d == 'W':
+                coords[west(cur)] = '|'
+                cur = west(west(cur))
+                coords[cur] = '.'
+            if d == 'S':
+                coords[south(cur)] = '-'
+                cur = south(south(cur))
+                coords[cur] = '.'
 
+    fill_unknowns_with_walls(coords)
     return coords
 
 
@@ -170,10 +172,10 @@ def bfs(coords, src):
     horizon = [src]
     costs = {src: 0}
     while horizon:
-        print(f'horizon {horizon}')
-        print(f'costs {costs}')
+        # print(f'horizon {horizon}')
+        # print(f'costs {costs}')
         cur = horizon.pop(-1)
-        print(cur)
+        # print(cur)
         for step_fn in [east, north, west, south]:
             if coords[step_fn(cur)] in '|-':
                 nxt = step_fn(step_fn(cur))
@@ -187,7 +189,12 @@ def bfs(coords, src):
     return costs
 
 
-def shortest_path_to_farthest_door(costs):
+def shortest_path_to_farthest_door(re):
+    src = (0, 0)
+    coords = {src: 'X'}
+    paths = parse_regex(re)
+    coords = build_map(coords, paths)
+    costs = bfs(coords, src)
     return max(costs.values())
 
 
@@ -202,6 +209,14 @@ def test_parse_regex(re, want):
     return False
 
 
+def test_shortest_path(re, want):
+    got = shortest_path_to_farthest_door(re)
+    if got == want:
+        return True
+    print(f'expected {want} got {cost}')
+    return False
+
+
 def main():
     assert(find_matching_paren('^N(E|W)N$', 2) == (6, [4]))
     assert(find_matching_paren('^ENWWW(NEEE|SSE(EE|N))$', 6) == (21, [11]))
@@ -212,29 +227,12 @@ def main():
     assert(test_parse_regex('^ENWWW(NEEE|SSE(EE|N))$', ['ENWWWNEEE', 'ENWWWSSEEE', 'ENWWWSSEN']))
     assert(test_parse_regex('^(NEWS|WNSE|NNNN)$', ['NEWS', 'WNSE', 'NNNN']))
     assert(test_parse_regex('^(NEWS|WNSE|)$', ['NEWS', 'WNSE', '']))
+    assert(test_shortest_path('^ENWWW(NEEE|SSE(EE|N))$', 10))
+    assert(test_shortest_path('^WNE$', 3))
+    assert(test_shortest_path('^ENNWSWW(NEWS|)SSSEEN(WNSE|)EE(SWEN|)NNN$', 18))
+    assert(test_shortest_path('^ESSWWN(E|NNENN(EESS(WNSE|)SSS|WWWSSSSE(SW|NNNE)))$', 23))
+    assert(test_shortest_path('^WSSEESWWWNW(S|NENNEEEENN(ESSSSW(NWSW|SSEN)|WSWWN(E|WWS(E|SS))))$', 31))
     print('pass')
-
-    # coords = {(0, 0): 'X'}
-    # paths = parse_regex('^WNE$')
-    # for path in paths:
-    #     coords = build_map(coords, path)
-    # fill_unknowns_with_walls(coords)
-    # render_map(coords)
-
-    # coords = {(0, 0): 'X'}
-    # paths = parse_regex('^N(E|W)N$')
-    # for path in paths:
-    #     coords = build_map(coords, path)
-    # fill_unknowns_with_walls(coords)
-    # render_map(coords)
-
-    coords = {(0, 0): 'X'}
-    paths = parse_regex('^ENWWW(NEEE|SSE(EE|N))$')
-    for path in paths:
-        coords = build_map(coords, path)
-    fill_unknowns_with_walls(coords)
-    costs = bfs(coords, (0, 0))
-    print(shortest_path_to_farthest_door(costs))
 
 
 if __name__ == '__main__':
