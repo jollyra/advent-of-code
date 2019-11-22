@@ -68,36 +68,36 @@ def find_current_location(coords):
             return p
 
 
+def step(coords, cur, direction):
+    # Build the walls
+    for p in neighbours_diagonal(cur):
+        if p in coords:
+            if coords[p] != '#':
+                raise Exception('diagonals should be walls {p}: {coords[p]}')
+        coords[p] = '#'
+
+    directions = {
+        'E': (east,  '|'),
+        'N': (north, '-'),
+        'W': (west,  '|'), 
+        'S': (south, '-'),
+    }
+
+    # Move to new room
+    step_fn, door_type = directions[direction]
+    coords[step_fn(cur)] = door_type
+    cur = step_fn(step_fn(cur))
+    coords[cur] = '.'
+
+    return cur
+
+
 def build_map(coords, paths):
     print('build_map')
     for path in paths:
         cur = (0, 0)
         for d in path:
-            # Build the walls
-            for p in neighbours_diagonal(cur):
-                if p in coords:
-                    if coords[p] != '#':
-                        raise Exception('diagonals should be walls {p}: {coords[p]}')
-                coords[p] = '#'
-
-            # Move to new room
-            if d == 'E':
-                coords[east(cur)] = '|'
-                cur = east(east(cur))
-                coords[cur] = '.'
-            if d == 'N':
-                coords[north(cur)] = '-'
-                cur = north(north(cur))
-                coords[cur] = '.'
-            if d == 'W':
-                coords[west(cur)] = '|'
-                cur = west(west(cur))
-                coords[cur] = '.'
-            if d == 'S':
-                coords[south(cur)] = '-'
-                cur = south(south(cur))
-                coords[cur] = '.'
-
+            cur = step(coords, cur, d)
     fill_unknowns_with_walls(coords)
     return coords
 
@@ -122,6 +122,7 @@ def find_matching_paren(re, i):
 def parse_regex(re):
     print('parse_regex')
     paths = []
+    coords = {(0, 0): 'X'}
 
     def parse(re, path):
         # print(re)
