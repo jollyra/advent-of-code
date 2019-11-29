@@ -7,8 +7,10 @@ def new_grid(filename):
     for line in inputs(filename):
         row = []
         for tile in line:
-            if tile in 'EG':
-                row.append((tile, 3, 200))
+            if tile in 'E':
+                row.append((tile, 3, 200, 'G'))
+            elif tile in 'G':
+                row.append((tile, 3, 200, 'E'))
             else:
                 row.append((tile))
         grid.append(row)
@@ -34,6 +36,10 @@ def in_bounds(grid, point):
 def get(grid, p):
     return grid[Y(p)][X(p)]
 
+def set(grid, p, val):
+    x, y = p
+    grid[y][x] = val
+
 
 def get_path(paths, p):
     path = []
@@ -51,9 +57,9 @@ def reading_order_bfs(grid, src, target):
     path = {src: None}
     while horizon:
         cur = horizon.popleft()
-        print(cur)
-        print(horizon)
-        print(path)
+        # print(cur)
+        # print(horizon)
+        # print(path)
         for n in reading_order_neighbours4(cur):
             if in_bounds(grid, n):  # TODO move this logic out of here
                 tile = get(grid, n)
@@ -63,7 +69,7 @@ def reading_order_bfs(grid, src, target):
                 if tile[0] == target:
                     path[n] = cur
                     return get_path(path, n)
-    return None
+    return []
 
 
 def main():
@@ -71,6 +77,24 @@ def main():
     render_grid(grid)
     path = reading_order_bfs(grid, (1, 1), 'G')
     print('path:', path)
+
+    attack_order = []
+    for y in range(len(grid)):
+        for x in range(len(grid[y])):
+            p = (x, y)
+            tile = get(grid, p)
+            if tile[0] in 'EG':
+                attack_order.append(p)
+
+    for p in attack_order:
+        entity = get(grid, p)
+        path = reading_order_bfs(grid, p, entity[3])
+        if path:
+            q = path[1]
+            set(grid, p, '.')
+            set(grid, q, entity)
+            render_grid(grid)
+
 
 
 if __name__ == '__main__':
