@@ -1,23 +1,13 @@
 #!/usr/bin/env python3
 
-from itertools import combinations, permutations
-from collections import deque, Counter, defaultdict
-from util import *
-
-
-def main():
-    lines = inputs('1_test.in')
-    ts = []
-    for line in lines:
-        t = int(line)
+with open('1.in', 'r') as f:
+    acc = 0
+    for line in f:
+        x = int(line)
         while True:
-            t = (t // 3) - 2
-            if t > 0:
-                ts.append(t)
+            x = x // 3 - 2
+            if x > 0:
+                acc += x
             else:
                 break
-    print(sum(ts))
-
-
-if __name__ == '__main__':
-    main()
+    print('Part 2:', acc)
