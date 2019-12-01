@@ -1,6 +1,10 @@
 # Advent of Code
 My [Advent of Code](http://adventofcode.com/) solutions.
 
+## 2019
+
+1. [The Tyranny of the Rocket Equation](https://adventofcode.com/2019/day/1) | [![Python](/images/pythonlogo.png)](2019/one.py) Topics: summing
+
 ## 2018
 
 1. [Chronal Calibration](https://adventofcode.com/2018/day/1) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d1/1.go) Topics: summing, reduce
