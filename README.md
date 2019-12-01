@@ -17,6 +17,21 @@ My [Advent of Code](http://adventofcode.com/) solutions.
 1. [Memory Maneuver](https://adventofcode.com/2018/day/8) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d8/8.go) Topics: recursion, n-ary tree traversal
 1. [Marble Mania](https://adventofcode.com/2018/day/9) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d9/9.go) Topics: doubly linked list, container/ring
 1. [The Stars Align](https://adventofcode.com/2018/day/10) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d10/main.go)
+1. [Chronal Charge](https://adventofcode.com/2018/day/11) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d11/main.go)
+1. [Subterranean Sustainability](https://adventofcode.com/2018/day/12) | 
+1. [Mine Cart Madnes1](https://adventofcode.com/2018/day/13) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d13/main.go)
+1. [Chocolate Charts](https://adventofcode.com/2018/day/14) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d14/main.go)
+1. [Beverage Bandits](https://adventofcode.com/2018/day/15) |
+1. [Chronal Classification](https://adventofcode.com/2018/day/16) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d16/main.go)
+1. [Reservoir Research](https://adventofcode.com/2018/day/17) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d17/main.go)
+1. [Settlers of The North Pole](https://adventofcode.com/2018/day/18) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d18/main.go)
+1. [Go With The Flow](https://adventofcode.com/2018/day/19) |
+1. [A Regular Map](https://adventofcode.com/2018/day/20) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d20/main.go)
+1. [Chronal Conversion](https://adventofcode.com/2018/day/21) |
+1. [Mode Maze](https://adventofcode.com/2018/day/22) |
+1. [Experimental Emergency Teleportation](https://adventofcode.com/2018/day/23) |
+1. [Immune System Simulator 20XX](https://adventofcode.com/2018/day/24) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d24/main.go)
+1. [Four-Dimensional Adventure](https://adventofcode.com/2018/day/25) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d25/main.go)
 
 ## 2017
 
