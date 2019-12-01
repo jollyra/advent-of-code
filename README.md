@@ -26,11 +26,11 @@ My [Advent of Code](http://adventofcode.com/) solutions.
 1. [Reservoir Research](https://adventofcode.com/2018/day/17) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d17/17.go)
 1. [Settlers of The North Pole](https://adventofcode.com/2018/day/18) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d18/main.go)
 1. [Go With The Flow](https://adventofcode.com/2018/day/19) |
-1. [A Regular Map](https://adventofcode.com/2018/day/20) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d20/20.go)
+1. [A Regular Map](https://adventofcode.com/2018/day/20) | [![Python](/images/pythonlogo.png)](/2018/twenty.py)
 1. [Chronal Conversion](https://adventofcode.com/2018/day/21) |
 1. [Mode Maze](https://adventofcode.com/2018/day/22) |
 1. [Experimental Emergency Teleportation](https://adventofcode.com/2018/day/23) |
-1. [Immune System Simulator 20XX](https://adventofcode.com/2018/day/24) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d24/main.go)
+1. [Immune System Simulator 20XX](https://adventofcode.com/2018/day/24) | [![Python](/images/pythonlogo.png)](/2018/twentyfour.py)
 1. [Four-Dimensional Adventure](https://adventofcode.com/2018/day/25) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2018d25/main.go)
 
 ## 2017
