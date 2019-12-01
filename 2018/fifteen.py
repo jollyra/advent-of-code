@@ -1,3 +1,5 @@
+import sys
+
 from util import *
 from collections import deque
 
@@ -72,12 +74,7 @@ def reading_order_bfs(grid, src, target):
     return []
 
 
-def main():
-    grid = new_grid('15_test.in')
-    render_grid(grid)
-    path = reading_order_bfs(grid, (1, 1), 'G')
-    print('path:', path)
-
+def get_attack_order(grid):
     attack_order = []
     for y in range(len(grid)):
         for x in range(len(grid[y])):
@@ -85,16 +82,25 @@ def main():
             tile = get(grid, p)
             if tile[0] in 'EG':
                 attack_order.append(p)
+    return attack_order
 
-    for p in attack_order:
-        entity = get(grid, p)
-        path = reading_order_bfs(grid, p, entity[3])
-        if path:
-            q = path[1]
-            set(grid, p, '.')
-            set(grid, q, entity)
-            render_grid(grid)
 
+def main():
+    grid = new_grid(sys.argv[1])
+    render_grid(grid)
+
+    # TODO: E and G will move into same space so it's time for the fighting mechanic
+    for i in range(4):
+        attack_order = get_attack_order(grid)
+        print('attack order', attack_order)
+        for p in attack_order:
+            entity = get(grid, p)
+            path = reading_order_bfs(grid, p, entity[3])
+            if path:
+                q = path[1]
+                set(grid, p, '.')
+                set(grid, q, entity)
+                render_grid(grid)
 
 
 if __name__ == '__main__':
