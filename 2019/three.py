@@ -52,7 +52,16 @@ def main():
     ws = [trace_path(d) for d in wires]
     intersects = find_intersects(*ws)
     dists = [manhattan_distance(i, (0, 0)) for i in intersects]
-    print(min(dists))
+    print('part 1', min(dists))
+
+    steps_to_intersection = []
+    for i in intersects:
+        j = ws[0].index(i)
+        k = ws[1].index(i)
+        steps_to_intersection.append(j + k)
+
+    print('part 2', min(steps_to_intersection))
+
 
 
 if __name__ == '__main__':
