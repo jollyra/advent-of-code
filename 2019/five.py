@@ -43,7 +43,7 @@ def input(memory, modes, ip):
     size = 2
     opcode = memory[ip:ip+size]
     ins, addr = opcode
-    memory[addr] = 1
+    memory[addr] = 5
     return ip + size
 
 
@@ -56,11 +56,91 @@ def output(memory, modes, ip):
     return ip + size
 
 
+def jump_if_true(memory, modes, ip):
+    size = 3
+    opcode = memory[ip:ip+size]
+    ins, arg0, arg1 = opcode
+
+    val0 = arg0
+    if modes.index(0) == position_mode:
+        val0 = memory[arg0]
+
+    val1 = arg1
+    if modes.index(1) == position_mode:
+        val1 = memory[arg1]
+
+    if val0 != 0:
+        return val1
+    return ip + size
+
+
+def jump_if_false(memory, modes, ip):
+    size = 3
+    opcode = memory[ip:ip+size]
+    ins, arg0, arg1 = opcode
+
+    val0 = arg0
+    if modes.index(0) == position_mode:
+        val0 = memory[arg0]
+
+    val1 = arg1
+    if modes.index(1) == position_mode:
+        val1 = memory[arg1]
+
+    if val0 == 0:
+        return val1
+    return ip + size
+
+
+def equals(memory, modes, ip):
+    size = 4
+    opcode = memory[ip:ip+size]
+    ins, arg0, arg1, out_addr = opcode
+
+    val0 = arg0
+    if modes.index(0) == position_mode:
+        val0 = memory[arg0]
+
+    val1 = arg1
+    if modes.index(1) == position_mode:
+        val1 = memory[arg1]
+
+    if val0 == val1:
+        memory[out_addr] = 1
+    else:
+        memory[out_addr] = 0
+    return ip + size
+
+
+def less_than(memory, modes, ip):
+    size = 4
+    opcode = memory[ip:ip+size]
+    ins, arg0, arg1, out_addr = opcode
+
+    val0 = arg0
+    if modes.index(0) == position_mode:
+        val0 = memory[arg0]
+
+    val1 = arg1
+    if modes.index(1) == position_mode:
+        val1 = memory[arg1]
+
+    if val0 > val1:
+        memory[out_addr] = 1
+    else:
+        memory[out_addr] = 0
+    return ip + size
+
+
 instructions = {
     1: addr_add,
     2: addr_mul,
     3: input,
-    4: output
+    4: output,
+    5: jump_if_true,
+    6: jump_if_false,
+    7: less_than,
+    8: equals
 }
 
 
