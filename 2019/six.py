@@ -28,13 +28,14 @@ def input_E(filename):
 
 def main():
     E = input_E('6.in')
-    costs = djikstras(E, 'YOU')
 
+    costs = djikstras(E, 'COM')
     acc = sum(c for c in costs.values())
-    print(f'Part 1 total no. of direct and indirect orbits {acc}')
+    print(f'Part 1 total no. of direct and indirect orbits from COM {acc}')
 
+    costs = djikstras(E, 'YOU')
     cost = costs['SAN'] - 2
-    print(f'Part 2 orbinal transfers from YOU -> SAN {cost}')
+    print(f'Part 2 orbital transfers from YOU -> SAN {cost}')
 
 
 if __name__ == '__main__':
