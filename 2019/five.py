@@ -159,8 +159,7 @@ class Modes:
         return 0
 
 
-def run(memory, inputs):
-    output = None
+def run(memory, inout):
     ip = 0
     while ip < len(memory):
         modebits = str(memory[ip])[:-2]
@@ -170,43 +169,51 @@ def run(memory, inputs):
         if ins_code in instructions:
             ins = instructions[ins_code]
             if ins_code == 3:
-                ip = ins(memory, modes, ip, inputs.pop(0))
+                inout = (yield inout)
+                print(f'reading in {inout}')
+                ip = ins(memory, modes, ip, inout)
             elif ins_code == 4:
-                ip, output = ins(memory, modes, ip)
+                ip, inout = ins(memory, modes, ip)
+                yield inout
+                print(f'yielding {inout}')
             else:
                 ip = ins(memory, modes, ip)
         elif ins_code == 99:
-            return output
+            return
         else:
             raise Exception(f'unrecognized instruction {ins_code} at memory address {ip}')
 
 
 def main():
-    assert(run([3,9,8,9,10,9,4,9,99,-1,8], [8]) == 1)
-    assert(run([3,9,8,9,10,9,4,9,99,-1,8], [9]) == 0)
-    assert(run([3,9,7,9,10,9,4,9,99,-1,8], [7]) == 1)
-    assert(run([3,9,7,9,10,9,4,9,99,-1,8], [8]) == 0)
-    assert(run([3,3,1108,-1,8,3,4,3,99], [8]) == 1)
-    assert(run([3,3,1108,-1,8,3,4,3,99], [9]) == 0)
-    assert(run([3,3,1107,-1,8,3,4,3,99], [7]) == 1)
-    assert(run([3,3,1107,-1,8,3,4,3,99], [8]) == 0)
-    assert(run([3,12,6,12,15,1,13,14,13,4,13,99,-1,0,1,9], [0]) == 0)
-    assert(run([3,12,6,12,15,1,13,14,13,4,13,99,-1,0,1,9], [1]) == 1)
-    assert(run([3,3,1105,-1,9,1101,0,0,12,4,12,99,1], [0]) == 0)
-    assert(run([3,3,1105,-1,9,1101,0,0,12,4,12,99,1], [1]) == 1)
-    assert(run([3,21,1008,21,8,20,1005,20,22,107,8,21,20,1006,20,31,
+    gen = run([3,9,8,9,10,9,4,9,99,-1,8], 8)
+    r = gen.send(None)
+    r = gen.send(8)
+    assert(r == 1)
+    # assert(next(run([3,9,8,9,10,9,4,9,99,-1,8], 8)) == 1)
+    assert(next(run([3,9,8,9,10,9,4,9,99,-1,8], 9)) == 0)
+    assert(next(run([3,9,7,9,10,9,4,9,99,-1,8], 7)) == 1)
+    assert(next(run([3,9,7,9,10,9,4,9,99,-1,8], 8)) == 0)
+    assert(next(run([3,3,1108,-1,8,3,4,3,99], 8)) == 1)
+    assert(next(run([3,3,1108,-1,8,3,4,3,99], 9)) == 0)
+    assert(next(run([3,3,1107,-1,8,3,4,3,99], 7)) == 1)
+    assert(next(run([3,3,1107,-1,8,3,4,3,99], 8)) == 0)
+    assert(next(run([3,12,6,12,15,1,13,14,13,4,13,99,-1,0,1,9], 0)) == 0)
+    assert(next(run([3,12,6,12,15,1,13,14,13,4,13,99,-1,0,1,9], 1)) == 1)
+    assert(next(run([3,3,1105,-1,9,1101,0,0,12,4,12,99,1], 0)) == 0)
+    assert(next(run([3,3,1105,-1,9,1101,0,0,12,4,12,99,1], 1)) == 1)
+    assert(next(run([3,21,1008,21,8,20,1005,20,22,107,8,21,20,1006,20,31,
                 1106,0,36,98,0,0,1002,21,125,20,4,20,1105,1,46,104,
-                999,1105,1,46,1101,1000,1,20,4,20,1105,1,46,98,99], [7]) == 999)
-    assert(run([3,21,1008,21,8,20,1005,20,22,107,8,21,20,1006,20,31,
+                999,1105,1,46,1101,1000,1,20,4,20,1105,1,46,98,99], 7)) == 999)
+    assert(next(run([3,21,1008,21,8,20,1005,20,22,107,8,21,20,1006,20,31,
                 1106,0,36,98,0,0,1002,21,125,20,4,20,1105,1,46,104,
-                999,1105,1,46,1101,1000,1,20,4,20,1105,1,46,98,99], [8]) == 1000)
-    assert(run([3,21,1008,21,8,20,1005,20,22,107,8,21,20,1006,20,31,
+                999,1105,1,46,1101,1000,1,20,4,20,1105,1,46,98,99], 8)) == 1000)
+    assert(next(run([3,21,1008,21,8,20,1005,20,22,107,8,21,20,1006,20,31,
                 1106,0,36,98,0,0,1002,21,125,20,4,20,1105,1,46,104,
-                999,1105,1,46,1101,1000,1,20,4,20,1105,1,46,98,99], [9]) == 1001)
+                999,1105,1,46,1101,1000,1,20,4,20,1105,1,46,98,99], 9)) == 1001)
     print('pass')
 
     memory = input_ints('5.in')
-    code = run(memory, [5])
+    code = next(run(memory, 5))
     print(f'Part 2: Diagnostic code is {code}')
 
 
