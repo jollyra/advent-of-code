@@ -5,7 +5,6 @@ from itertools import permutations
 
 def new_amp(prog, phase):
     prog = prog[::]
-    print(f'seeding amp with {phase}')
     return intcode.run(prog, phase)
 
 
@@ -13,7 +12,7 @@ def run_amps_series_once(prog, phase_seq):
     amps = [new_amp(prog, phase) for phase in phase_seq]
     signal = 0
     for i, amp in enumerate(amps):
-        amp.send(None)
+        next(amp)
         amp.send(phase_seq[i])
         signal = amp.send(signal)
     return signal
@@ -25,7 +24,7 @@ def run_amps_series_feedback(prog, phase_seq):
 
     # init
     for i, amp in enumerate(amps):
-        amp.send(None)
+        next(amp)
         amp.send(phase_seq[i])
 
     s0 = 0
@@ -90,9 +89,11 @@ def main():
 
     prog = input_prog('7.in')
     seq, thrust = max_thrust_phase_seq(prog)
+    assert(thrust == 24405)
     print(f'part 1: max ({seq}, {thrust})')
 
     seq, thrust = max_thrust_phase_seq_p2(prog)
+    assert(thrust == 8271623)
     print(f'part 2: max ({seq}, {thrust})')
 
 
