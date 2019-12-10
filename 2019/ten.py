@@ -86,7 +86,29 @@ def main():
             if len(ds) > 0:
                 detectable_asteroids[src] += 1
 
-    print('Part 1', max(detectable_asteroids.values()))
+    station = max(detectable_asteroids.keys(), key=lambda k:detectable_asteroids[k])
+    print(f'Part 1: build a station at {station} that sees {detectable_asteroids[station]} asteroids')
+
+    i = 0
+    los = loss[station]
+    num_vaporized = 0
+    layers = []
+    while True:
+        layer = []
+        for line in los.values():
+            if len(line) > i:
+                layer.append(line[i])
+        if len(layer) == 0:
+            break
+        layers.append(layer)
+        i += 1
+
+    angle_from_station = partial(angle, station)
+    for layer in layers:
+        for ast in sorted(layer, key=angle_from_station):
+            num_vaporized += 1
+            if num_vaporized == 200:
+                print(ast)
 
 
 
