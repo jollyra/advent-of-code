@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import doctest
 import math
-from collections import defaultdict
+from collections import defaultdict, deque
 from functools import partial
 
 
@@ -71,30 +71,22 @@ def line_of_sight(grid, asts, src):
     return los
 
 
-def main():
-    grid = input_grid('10.in')
-    render(grid)
-    asts = asteroids(grid)
-
-    loss = {}
-    for src in asts:
-        loss[src] = (line_of_sight(grid, asts, src))
-
+def best_asteroid_for_station(lines):
     detectable_asteroids = defaultdict(int)
-    for src, los in loss.items():
+    for src, los in lines.items():
         for ds in los.values():
             if len(ds) > 0:
                 detectable_asteroids[src] += 1
-
     station = max(detectable_asteroids.keys(), key=lambda k:detectable_asteroids[k])
-    print(f'Part 1: build a station at {station} that sees {detectable_asteroids[station]} asteroids')
+    nastroids = detectable_asteroids[station]
+    return station, nastroids
 
+
+def vaporized_order(los, station):
     i = 0
-    los = loss[station]
-    num_vaporized = 0
     layers = []
     while True:
-        layer = []
+        layer = deque()
         for line in los.values():
             if len(line) > i:
                 layer.append(line[i])
@@ -103,12 +95,43 @@ def main():
         layers.append(layer)
         i += 1
 
+    vaporized = []
     angle_from_station = partial(angle, station)
-    for layer in layers:
-        for ast in sorted(layer, key=angle_from_station):
-            num_vaporized += 1
-            if num_vaporized == 200:
-                print(ast)
+    for l ,layer in enumerate(layers):
+        clockwise_layer = deque(sorted(layer, key=angle_from_station))
+        for j in range(len(clockwise_layer)):
+            if angle_from_station(clockwise_layer[0]) >= 270.0:
+                break
+            clockwise_layer.rotate(-1)
+        assert(len(clockwise_layer) == len(layer))
+        for ast in clockwise_layer:
+            vaporized.append(ast)
+            # print(l, num_vaporized, ast, angle_from_station(ast))
+
+    return vaporized
+
+def main():
+    grid = input_grid('10.in')
+    asts = asteroids(grid)
+    lines = {src: line_of_sight(grid, asts, src) for src in asts}
+
+    station, nastroids = best_asteroid_for_station(lines)
+    assert(nastroids == 314)
+    print(f'Part 1: build a station at {station} that sees {nastroids} asteroids')
+
+    # grid = input_grid('10_test_part2.in')
+    # grid = input_grid('10_test2.in')
+    grid = input_grid('10.in')
+    asts = asteroids(grid)
+    lines = {src: line_of_sight(grid, asts, src) for src in asts}
+    station, nastroids = best_asteroid_for_station(lines)
+    print(f'Part 2: build a station at {station} that sees {nastroids} asteroids')
+
+    vaporized = vaporized_order(lines[station], station)
+    for i, v in enumerate(vaporized, start=1):
+        print(i, v)
+
+
 
 
 
