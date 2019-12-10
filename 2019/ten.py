@@ -75,16 +75,18 @@ def main():
     grid = input_grid('10.in')
     render(grid)
     asts = asteroids(grid)
-    detectable = defaultdict(int)
-    for src in asts:
-        los = line_of_sight(grid, asts, src)
 
+    loss = {}
+    for src in asts:
+        loss[src] = (line_of_sight(grid, asts, src))
+
+    detectable_asteroids = defaultdict(int)
+    for src, los in loss.items():
         for ds in los.values():
             if len(ds) > 0:
-                detectable[src] += 1
+                detectable_asteroids[src] += 1
 
-
-    print('Part 1', max(detectable.values()))
+    print('Part 1', max(detectable_asteroids.values()))
 
 
 
