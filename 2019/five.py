@@ -174,11 +174,11 @@ def run(memory):
     relative_base = 0
     inout = None
     ip = 0
-    while ip < len(memory):
+    while True:
         modebits = str(memory[ip])[:-2]
         modes = Modes(modebits)
         ins_code = int(str(memory[ip])[-2:])
-        print(f'ins: {ins_code}, ip: {ip}/{len(mem1)}')
+        # print(f'ins: {ins_code}, ip: {ip}/{len(mem1)}')
         if ins_code in instructions:
             ins = instructions[ins_code]
             if ins_code == 3:

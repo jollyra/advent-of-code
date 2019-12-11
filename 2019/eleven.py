@@ -82,7 +82,7 @@ def main():
     assert(r == None)
 
     while True:
-        print(cur, heading)
+        # print(cur, heading)
         try:
             colour = coords[cur]
             assert(colour in [0, 1])
@@ -107,6 +107,8 @@ def main():
             print('stopping iteration', e)
             break
     print(f'Part 1: {len(coords)} panels painted at least once')
+    for k, v in coords.items():
+        print(k, v)
     render_map(coords)
 
 
