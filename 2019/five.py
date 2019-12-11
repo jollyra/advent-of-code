@@ -178,7 +178,7 @@ def run(memory):
         modebits = str(memory[ip])[:-2]
         modes = Modes(modebits)
         ins_code = int(str(memory[ip])[-2:])
-        # print(f'ins: {ins_code}, ip: {ip}/{len(mem1)}')
+        print(f'ins: {ins_code}, ip: {ip}/{len(mem1)}')
         if ins_code in instructions:
             ins = instructions[ins_code]
             if ins_code == 3:
@@ -190,7 +190,7 @@ def run(memory):
             else:
                 ip = ins(memory, modes, ip)
         elif ins_code == 99:
-            return
+            return None
         else:
             raise Exception(f'unrecognized instruction {ins_code} at memory address {ip}')
     return None
