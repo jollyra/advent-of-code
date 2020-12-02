@@ -4,6 +4,7 @@ My [Advent of Code](http://adventofcode.com/) solutions.
 ## 2020
 
 1. [Report Repair](https://adventofcode.com/2020/day/1) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2020d1/1.go)
+1. [Password Philosophy](https://adventofcode.com/2020/day/2) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2020d2/2.go)
 
 
 ## 2019
