@@ -1,6 +1,11 @@
 # 🎄Advent of Code🎄
 My [Advent of Code](http://adventofcode.com/) solutions.
 
+## 2020
+
+1. [Report Repair](https://adventofcode.com/2020/day/1) | [![Go](/images/gopher.png)](https://github.com/jollyra/advent-of-go/blob/master/2020d1/1.go)
+
+
 ## 2019
 
 1. [The Tyranny of the Rocket Equation](https://adventofcode.com/2019/day/1) | [![Python](/images/pythonlogo.png)](2019/one.py) Topics: summing
